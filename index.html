@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="-8"utf>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Travel Planner App</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+
+<header>
+  <h1 class="logo">Travel Planner</h1>
+  <nav id="nav">
+    <button data-page="home" class="active">Home</button>
+    <button data-page="dest">Destinations</button>
+    <button data-page="gallery">Gallery</button>
+    <button data-page="blog">Guide</button>
+    <button data-page="survey">Survey</button>
+  </nav>
+  <div class="user">
+    <span id="who">Guest</span>
+    <button id="loginBtn" class="btn yellow small">Log in</button>
+  </div>
+</header>
+
+<main>
+
+
+<section class="page show" id="home">
+  <div class="hero">
+    <h2>Find your next tropical escape</h2>
+    <p>Explore destinations, work out how much a trip costs and share what you think about them.</p>
+  </div>
+  <h2>Our destinations</h2>
+  <div class="grid" id="homeCities"></div>
+</section>
+
+
+<section class="page" id="dest">
+  <h2>Destinations and travel costs</h2>
+
+  <div class="box">
+    <div class="row">
+      <div>
+        <label for="fCat">Category</label>
+        <select id="fCat"><option value="">All</option></select>
+      </div>
+      <div>
+        <label for="fBudget">Max budget (€)</label>
+        <input id="fBudget" type="number" min="0" placeholder="e.g. 1500">
+      </div>
+      <div>
+        <label for="fDays">Number of days</label>
+        <input id="fDays" type="number" min="1" value="7">
+      </div>
+    </div>
+    <p class="small-text">Total = transport + days × (hotel per night + daily expenses)</p>
+  </div>
+
+  <div class="grid" id="destList"></div>
+
+</section>
+
+
+<section class="page" id="gallery">
+  <h2>Gallery</h2>
+  <div class="grid" id="galList"></div>
+
+  <div id="galDetail" style="display:none">
+    <button class="btn small" id="galBack">← Back</button>
+    <h2 id="gTitle" class="space-top"></h2>
+    <div class="photos" id="gImgs"></div>
+
+    <div class="box">
+      <button class="btn" id="likeBtn">👍 <span id="likes">0</span></button>
+      <button class="btn red" id="dislikeBtn">👎 <span id="dislikes">0</span></button>
+    </div>
+
+    <div class="box">
+      <h3>Comments</h3>
+      <div id="comments"></div>
+      <label for="cmText">Write a comment</label>
+      <textarea id="cmText" rows="2"></textarea>
+      <p><button class="btn" id="cmBtn">Post</button></p>
+    </div>
+  </div>
+</section>
+
+
+<section class="page" id="blog">
+  <h2>Travel guide</h2>
+  <div id="blogList"></div>
+</section>
+
+
+<section class="page" id="survey">
+  <h2>Visitor survey</h2>
+  <form class="box" id="surveyForm">
+    <label for="sName">Name</label>
+    <input id="sName" required>
+
+    <label for="sEmail">Email</label>
+    <input id="sEmail" type="email">
+
+    <label for="sAge">Age group</label>
+    <select id="sAge">
+      <option>Under 18</option><option>18-25</option><option>26-40</option><option>40+</option>
+    </select>
+
+    <label>What do you think of the website?</label>
+    <div>
+      <label class="inline"><input type="radio" name="rate" value="5" checked> Great</label>
+      <label class="inline"><input type="radio" name="rate" value="3"> Okay</label>
+      <label class="inline"><input type="radio" name="rate" value="1"> Bad</label>
+    </div>
+
+    <label>Which parts did you use?</label>
+    <div>
+      <label class="inline"><input type="checkbox" name="used" value="Destinations"> Destinations</label>
+      <label class="inline"><input type="checkbox" name="used" value="Gallery"> Gallery</label>
+      <label class="inline"><input type="checkbox" name="used" value="Guide"> Guide</label>
+    </div>
+
+    <label for="sText">Anything else?</label>
+    <textarea id="sText" rows="3"></textarea>
+
+    <p><button class="btn" type="submit">Send</button></p>
+    <p id="sMsg" class="small-text"></p>
+  </form>
+
+  <div class="box">
+    <h3>Answers so far</h3>
+    <div id="sResults" class="small-text">No answers yet.</div>
+  </div>
+</section>
+
+</main>
+
+
+<footer>
+  <p>Contact us at: +389 xx xxx xxx</p>
+</footer>
+
+
+<dialog id="loginDlg">
+  <form method="dialog">
+    <h3>Log in</h3>
+    <label for="lUser">Username</label>
+    <input id="lUser" required>
+    <label for="lPass">Password</label>
+    <input id="lPass" type="password" required>
+    <p>
+      <button class="btn" value="ok">Log in</button>
+      <button class="btn red" value="cancel" formnovalidate>Cancel</button>
+    </p>
+  </form>
+</dialog>
+
+<script src="index.js"></script>
+</body>
+</html>
